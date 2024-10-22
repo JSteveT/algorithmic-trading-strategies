@@ -56,12 +56,12 @@ gantt
 
     section Strategy Development
     Develop Initial Strategies  :b1, 2024-10-08, 14d
-    Implement ML Algorithms     :b2, 2024-10-15, 14d
-    Refine Strategies           :b3, 2024-10-22, 7d
+    Implement ML Algorithms     :b2, 2024-10-22, 10d
+    Refine Strategies           :b3, 2024-11-01, 7d
 
     section Backtesting and Optimization
-    Backtesting Framework       :c1, 2024-11-05, 7d
-    Analyze & Optimize          :c2, 2024-11-12, 14d
+    Backtesting Framework       :c1, 2024-11-10, 7d
+    Analyze & Optimize          :c2, 2024-11-17, 14d
     
     milestone Interim Report Due: milestone1, 2024-11-07, 1d
 
