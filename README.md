@@ -7,6 +7,12 @@ This project explores algorithmic methods and machine learning to enhance stock 
 ### Student: James Taylor  
 ### Supervisor: Dr. Julian Gutierrez  
 
+## How to run
+
+```
+streamlit run dashboard.py
+```
+
 ## Aims
 
 The project aims to:
