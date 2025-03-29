@@ -147,18 +147,44 @@ def visualize_results():
     plt.savefig("results/optimized_visuals.png")
     plt.show()
 
-if __name__ == "__main__":
-    # 🔥 Step 1: Optimize Parameters
-    optimize_parameters()
+def run_all_backtests():
+    print("\n📊 Running Core Strategy Comparisons\n" + "-" * 40)
 
-    # 🔥 Step 2: Visualize Results
-    visualize_results()
+    # === MA Crossover with default parameters ===
+    print("📈 Moving Average Crossover (default 40/100):")
+    ma_default = run_backtest(MovingAverageCrossover, short_window=40, long_window=100)
+    print(f"Final Value: ${ma_default['final_value']:.2f}")
+    print(f"Sharpe Ratio: {ma_default['sharpe_ratio']:.2f}")
+    print(f"Max Drawdown: {ma_default['max_drawdown']:.2f}%")
+    print(f"Total Return: {ma_default['total_return']:.2%}\n")
 
-    # 🔥 Step 3: Run RSI Strategy Backtest for Comparison
-    print("\n🔍 Running RSI Strategy Backtest for Comparison...")
+    # === Best MA Crossover from optimisation ===
+    best_params = pd.read_csv("results/optimization_results.csv")
+    best_row = best_params.sort_values(by="sharpe_ratio", ascending=False).iloc[0]
+    short = int(best_row["short_window"])
+    long = int(best_row["long_window"])
+    
+    print(f"🏆 Optimised MA Crossover (Short: {short}, Long: {long}):")
+    ma_optimised = run_backtest(MovingAverageCrossover, short_window=short, long_window=long)
+    print(f"Final Value: ${ma_optimised['final_value']:.2f}")
+    print(f"Sharpe Ratio: {ma_optimised['sharpe_ratio']:.2f}")
+    print(f"Max Drawdown: {ma_optimised['max_drawdown']:.2f}%")
+    print(f"Total Return: {ma_optimised['total_return']:.2%}\n")
+
+    # === RSI Strategy ===
+    print("📉 RSI Strategy (default 14/70/30):")
     rsi_results = run_backtest(RSIStrategy)
-    print(f"\n🎯 RSI Strategy Results:")
-    print(f"Final Portfolio Value: ${rsi_results['final_value']:.2f}")
+    print(f"Final Value: ${rsi_results['final_value']:.2f}")
     print(f"Sharpe Ratio: {rsi_results['sharpe_ratio']:.2f}")
     print(f"Max Drawdown: {rsi_results['max_drawdown']:.2f}%")
     print(f"Total Return: {rsi_results['total_return']:.2%}")
+    
+if __name__ == "__main__":
+    # 🔥 Step 1: Optimise MA Parameters
+    optimize_parameters()
+
+    # 🔥 Step 2: Visualise Results
+    visualize_results()
+
+    # 🔥 Step 3: Run All Key Strategy Backtests
+    run_all_backtests()
