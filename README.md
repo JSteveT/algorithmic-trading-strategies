@@ -7,9 +7,9 @@
 
 ## Project Overview
 
-This project explores algorithmic trading strategies using historical stock market data and machine learning. The system is designed to collect and clean stock data, implement trading strategies, optimize their parameters, backtest their performance, and visualize results. It also includes a dashboard for user interaction and prediction.
+This project will explore differnet algorithmic trading strategies using historical stock market data. This implementation will also implemente machine learning. The systems design collects and cleans data, analysis trading strategies, parameter optimiation, backtesting for performance metrics and displays visuale results. The project also has a dashboard to provide users interaction a prediction.
 
-Key focus areas include:
+Key areas include the following:
 - Moving Average Crossover strategies (enhanced with ATR and Bollinger Bands)
 - RSI-based trading systems
 - Linear Regression-based stock price prediction
@@ -17,7 +17,7 @@ Key focus areas include:
 
 ## Features
 
-- **Data Collection & Cleaning:** Pulls data from Yahoo Finance, ensures accuracy.
+- **Data Collection & Cleaning:** Downloads data from Yahoo Finance, this will ensure accuracy.
 - **Predictive Modeling:** Linear Regression to predict next-day closing prices.
 - **Strategies Implemented:**
   - Moving Average Crossover with Bollinger Bands, ATR-based stop-loss/take-profit.
@@ -79,9 +79,9 @@ streamlit run dashboard.py
 
 ## Data
 
-All historical stock data is pulled from Yahoo Finance using `yfinance`. Example ticker: `AAPL`.
+The historical stock data is being downloaded from yahoo finance using `yfinance`.
 
-Cleaned data is saved in the `data/` folder as CSV files (e.g., `aapl_data.csv`).
+This data is cleaned and then saved to the data folder as a csv.
 
 ## Testing
 
