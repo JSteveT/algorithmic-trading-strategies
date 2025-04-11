@@ -50,22 +50,18 @@ class RSIStrategy(bt.Strategy):
                 self.order = self.buy()
                 self.entry_price = self.data.close[0]
 
-        # Exit Condition
         elif self.position:
             atr = self.atr[0]
             current_price = self.data.close[0]
 
-            # Stop-loss
             if current_price < (self.entry_price - (self.params.risk_factor * atr)):
                 self.close()
                 self.order = None
 
-            # Take-profit
             elif current_price > (self.entry_price + (self.params.take_profit_factor * atr)):
                 self.close()
                 self.order = None
 
-            # RSI crosses back above 50 (momentum reversal)
             elif self.rsi[0] > 50:
                 self.close()
                 self.order = None

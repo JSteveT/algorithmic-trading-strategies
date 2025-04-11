@@ -5,7 +5,6 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Define Trading Strategy
 class MyStrategy(bt.Strategy):
     params = ("short_window", 40), ("long_window", 100)
 
@@ -19,32 +18,27 @@ class MyStrategy(bt.Strategy):
         elif self.short_mavg[0] < self.long_mavg[0] and self.position:
             self.sell()
 
-# Function to Run a Single Backtest
 def run_backtest(short_window=40, long_window=100, data_file="data/aapl_data.csv", plot_results=False):
     cerebro = bt.Cerebro()
     cerebro.addstrategy(MyStrategy, short_window=short_window, long_window=long_window)
 
     try:
-        # Load and clean data before passing to Backtrader
         df = pd.read_csv(data_file, parse_dates=["Date"], index_col="Date")
         df.dropna(inplace=True)
 
-        # Ensure all values are numeric
         numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
         df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce")
         df.dropna(inplace=True)
 
-        # Convert DataFrame to Backtrader format
         data = bt.feeds.PandasData(dataname=df)
         cerebro.adddata(data)
     except FileNotFoundError:
-        print(f"🚨 ERROR: Data file {data_file} not found!")
+        print(f"Error: Data file {data_file} not found!")
         return None
     
     cerebro.broker.set_cash(10000)
     cerebro.broker.setcommission(commission=0.001)
 
-    # Add analyzers for performance metrics
     cerebro.addanalyzer(bt.analyzers.SharpeRatio, _name="sharpe")
     cerebro.addanalyzer(bt.analyzers.DrawDown, _name="drawdown")
     cerebro.addanalyzer(bt.analyzers.Returns, _name="returns")
@@ -62,7 +56,6 @@ def run_backtest(short_window=40, long_window=100, data_file="data/aapl_data.csv
         "total_return": strat.analyzers.returns.get_analysis()["rtot"]
     }
 
-# Function to Optimize Parameters
 def optimize_parameters():
     short_windows = [5, 10, 20, 40, 60]
     long_windows = [50, 100, 150, 200]
@@ -74,8 +67,8 @@ def optimize_parameters():
     os.makedirs("results", exist_ok=True)
 
     for short_window, long_window in itertools.product(short_windows, long_windows):
-        print(f"🔍 Testing Short: {short_window}, Long: {long_window}...")
-        result = run_backtest(short_window, long_window, plot_results=False)  # Disable plotting during optimization
+        print(f"Testing Short: {short_window}, Long: {long_window}...")
+        result = run_backtest(short_window, long_window, plot_results=False)
         if result:
             results.append({
                 "short_window": short_window,
@@ -86,10 +79,9 @@ def optimize_parameters():
                 "total_return": result["total_return"]
             })
 
-    # Save results
     results_df = pd.DataFrame(results)
     results_df.to_csv("results/optimization_results.csv", index=False)
-    print("📊 Optimization results saved to `results/optimization_results.csv`")
+    print("Optimization results saved to `results/optimization_results.csv`")
 
 if __name__ == "__main__":
     optimize_parameters()

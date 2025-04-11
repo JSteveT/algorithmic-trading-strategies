@@ -5,11 +5,9 @@ import seaborn as sns
 from prediction import predict_future_price
 from backtesting import run_backtest, MovingAverageCrossover, RSIStrategy
 
-# Load Data with Error Handling
 def load_data():
     try:
         data = pd.read_csv("data/aapl_data.csv", parse_dates=["Date"], index_col="Date")
-        # Ensure numeric values only
         data = data.apply(pd.to_numeric, errors='coerce')
         data.dropna(inplace=True)
         return data
