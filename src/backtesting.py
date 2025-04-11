@@ -33,19 +33,19 @@ def run_backtest(strategy, short_window=None, long_window=None, data_file="data/
     }
 
 def compare_strategies():
-    print("\n🔍 Running Comparative Backtests\n" + "-" * 40)
+    print("\nRunning Comparative Backtests\n" + "-" * 40)
 
-    print("\n📈 MA Crossover (40/100):")
+    print("\nMA Crossover (40/100):")
     ma_default = run_backtest(MovingAverageCrossover, short_window=40, long_window=100)
     for k, v in ma_default.items():
         print(f"{k.replace('_', ' ').title()}: {v:.4f}" if isinstance(v, float) else f"{k.title()}: {v}")
 
-    print("\n🏆 MA Crossover (Optimised 20/100):")
+    print("\nMA Crossover (Optimised 20/100):")
     ma_opt = run_backtest(MovingAverageCrossover, short_window=20, long_window=100)
     for k, v in ma_opt.items():
         print(f"{k.replace('_', ' ').title()}: {v:.4f}" if isinstance(v, float) else f"{k.title()}: {v}")
 
-    print("\n📉 RSI Strategy:")
+    print("\nRSI Strategy:")
     rsi = run_backtest(RSIStrategy)
     for k, v in rsi.items():
         print(f"{k.replace('_', ' ').title()}: {v:.4f}" if isinstance(v, float) else f"{k.title()}: {v}")
