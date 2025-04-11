@@ -1,51 +1,105 @@
-# AI Techniques for Complex Financial Systems
+# Strategic Reasoning for Stock Market Systems
 
-## Overview
+**Author:** James Taylor  
+**Supervisor:** Dr. Julian Gutierrez  
+**Course:** BSc Computer Science – University of Sussex  
+**Year:** 2024–2025  
 
-This project explores algorithmic methods and machine learning to enhance stock market trading strategies using historical data.
+## Project Overview
 
-### Student: James Taylor  
-### Supervisor: Dr. Julian Gutierrez  
+This project explores algorithmic trading strategies using historical stock market data and machine learning. The system is designed to collect and clean stock data, implement trading strategies, optimize their parameters, backtest their performance, and visualize results. It also includes a dashboard for user interaction and prediction.
 
-## How to run
+Key focus areas include:
+- Moving Average Crossover strategies (enhanced with ATR and Bollinger Bands)
+- RSI-based trading systems
+- Linear Regression-based stock price prediction
+- Strategy performance visualization and parameter optimization
+
+## Features
+
+- **Data Collection & Cleaning:** Pulls data from Yahoo Finance, ensures accuracy.
+- **Predictive Modeling:** Linear Regression to predict next-day closing prices.
+- **Strategies Implemented:**
+  - Moving Average Crossover with Bollinger Bands, ATR-based stop-loss/take-profit.
+  - RSI-based strategy.
+- **Backtesting Framework:** Using `Backtrader` with Sharpe Ratio, Drawdown, and Return analysis.
+- **Optimization Module:** Exhaustive parameter tuning with heatmap output.
+- **Streamlit Dashboard:** Interactive interface showing predictions, backtests, and optimization visuals.
+
+## Project Structure
 
 ```
+.
+├── src/
+│   ├── data_collection.py          # Fetch and clean data from Yahoo Finance
+│   ├── data_enhancements.py        # Alternate data pipeline with auto-adjustments
+│   ├── prediction.py               # Linear Regression price predictor
+│   ├── strategies.py               # MA crossover and RSI strategy definitions
+│   ├── backtesting.py              # Strategy execution, analyzers, optimizer, heatmaps
+│   ├── optimization.py             # Strategy parameter sweeps using Backtrader
+│   ├── dashboard.py                # Streamlit UI for predictions and evaluations
+├── data/                           # Directory for all CSV datasets
+├── results/                        # Directory for CSV and heatmaps from optimization
+└── README.md                       # This file
+```
+
+## 🏁 Getting Started
+
+### 1. **Set up your environment**
+```bash
+pip install -r requirements.txt
+```
+
+Recommended packages:
+- `yfinance`
+- `pandas`
+- `numpy`
+- `matplotlib`
+- `seaborn`
+- `backtrader`
+- `scikit-learn`
+- `streamlit`
+
+### 2. **Run data collection**
+```bash
+python data_collection.py
+```
+
+### 3. **Run backtesting or optimization**
+```bash
+python backtesting.py
+# or
+python optimization.py
+```
+
+### 4. **Launch dashboard**
+```bash
 streamlit run dashboard.py
 ```
 
-## Aims
+## Data
 
-The project aims to:
+All historical stock data is pulled from Yahoo Finance using `yfinance`. Example ticker: `AAPL`.
 
-- Identify profitable trading opportunities through data analysis.
-- Evaluate trading strategies under various market conditions.
-- Improve decision-making with data-driven insights.
+Cleaned data is saved in the `data/` folder as CSV files (e.g., `aapl_data.csv`).
 
-## Objectives
+## Testing
 
-1. **Research**: Review existing trading strategies and AI techniques.
-2. **Data Collection**: Gather and preprocess historical stock market data.
-3. **Strategy Development**: Create trading strategies using machine learning.
-4. **Backtesting**: Evaluate strategy performance with historical data.
-5. **User Testing**: Gather feedback on usability and effectiveness.
+Testing is mainly conducted via:
+- Historical backtests using `Backtrader`.
+- Parameter optimization sweeps with Sharpe Ratio analysis.
+- Optional user testing for UI/UX (see compliance form in Appendix).
 
-### Extensions
+## Ethics & Compliance
 
-- Incorporate advanced machine learning techniques.
-- Develop a real-time trading simulation.
-- Create interactive visualization tools.
+All user testing adheres to the **BCS Code of Conduct** and **GDPR** guidelines.  
+Please refer to the signed User Testing Compliance Form in the report appendix.
 
-## Relevance
+## References
 
-This project blends programming, modeling, and financial analysis, enhancing skills in Python and data analysis while deepening financial market understanding.
-
-## Resources Required
-
-- Access to financial databases.
-- Python coding environments.
-- Cloud computing resources for analysis.
-- Collaboration with financial analysts.
-
-## Acknowledgments
-
-Thanks to Dr. Julian Gutierrez for guidance.
+- Yahoo Finance API
+- Investopedia
+- QuantStart
+- Towards Data Science
+- Scikit-learn documentation
+- Backtrader documentation
