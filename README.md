@@ -31,19 +31,19 @@ Key focus areas include:
 ```
 .
 ├── src/
-│   ├── data_collection.py          # Fetch and clean data from Yahoo Finance
-│   ├── data_enhancements.py        # Alternate data pipeline with auto-adjustments
-│   ├── prediction.py               # Linear Regression price predictor
-│   ├── strategies.py               # MA crossover and RSI strategy definitions
-│   ├── backtesting.py              # Strategy execution, analyzers, optimizer, heatmaps
-│   ├── optimization.py             # Strategy parameter sweeps using Backtrader
-│   ├── dashboard.py                # Streamlit UI for predictions and evaluations
-├── data/                           # Directory for all CSV datasets
-├── results/                        # Directory for CSV and heatmaps from optimization
-└── README.md                       # This file
+│   ├── data_collection.py          
+│   ├── data_enhancements.py        
+│   ├── prediction.py               
+│   ├── strategies.py               
+│   ├── backtesting.py              
+│   ├── optimization.py             
+│   ├── dashboard.py                
+├── data/                           
+├── results/                        
+└── README.md                       
 ```
 
-## 🏁 Getting Started
+## Getting Started
 
 ### 1. **Set up your environment**
 ```bash
