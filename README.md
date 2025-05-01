@@ -1,11 +1,4 @@
-# Strategic Reasoning for Stock Market Systems
-
-**Author:** James Taylor  
-**Supervisor:** Dr. Julian Gutierrez  
-**Course:** BSc Computer Science – University of Sussex  
-**Year:** 2024–2025  
-
-## Project Overview
+# Algorithmic Trading Strategies
 
 This project will explore differnet algorithmic trading strategies using historical stock market data. This implementation will also implemente machine learning. The systems design collects and cleans data, analysis trading strategies, parameter optimiation, backtesting for performance metrics and displays visuale results. The project also has a dashboard to provide users interaction a prediction.
 
@@ -15,7 +8,7 @@ Key areas include the following:
 - Linear Regression-based stock price prediction
 - Strategy performance visualization and parameter optimization
 
-## Features
+## Key Features
 
 - **Data Collection & Cleaning:** Downloads data from Yahoo Finance, this will ensure accuracy.
 - **Predictive Modeling:** Linear Regression to predict next-day closing prices.
@@ -77,11 +70,9 @@ python optimization.py
 streamlit run dashboard.py
 ```
 
-## Data
+## Data Source
 
-The historical stock data is being downloaded from yahoo finance using `yfinance`.
-
-This data is cleaned and then saved to the data folder as a csv.
+Historical stock data is sourced from Yahoo Finance via the `yfinance` API, cleaned and saved to CSV in the `data/` folder.
 
 ## Testing
 
@@ -89,17 +80,3 @@ Testing is mainly conducted via:
 - Historical backtests using `Backtrader`.
 - Parameter optimization sweeps with Sharpe Ratio analysis.
 - Optional user testing for UI/UX (see compliance form in Appendix).
-
-## Ethics & Compliance
-
-All user testing adheres to the **BCS Code of Conduct** and **GDPR** guidelines.  
-Please refer to the signed User Testing Compliance Form in the report appendix.
-
-## References
-
-- Yahoo Finance API
-- Investopedia
-- QuantStart
-- Towards Data Science
-- Scikit-learn documentation
-- Backtrader documentation
